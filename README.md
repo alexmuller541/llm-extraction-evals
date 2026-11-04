@@ -4,7 +4,7 @@ Eval-Harness für LLM-Extraktion aus **Lieferanten-Auftragsbestätigungen** (DE/
 
 Die zentrale Frage ist nicht nur „Wie viele Felder stimmen?“, sondern: **Wie oft landet ein falscher Liefertermin ohne Prüfmarkierung im System?** Ein falscher bestätigter Termin verfälscht Bestandsprognosen und Euro-Zahlen, ein fehlender Termin kostet nur einen Blick.
 
-> **Status:** Harness, Gold-Set, Metriken, Tests und regelbasierte Baseline laufen. Die Messung der LLM-Pipeline (Tabelle unten) steht noch aus und wird erst eingetragen, wenn sie gelaufen ist.
+> **Status:** Harness, Gold-Set, Metriken, Tests und regelbasierte Baseline laufen. Die Messung des ORIGIN-Prompts mit einem LLM (Tabelle unten) steht noch aus und wird erst eingetragen, wenn sie gelaufen ist.
 
 ## Was gemessen wird
 
@@ -37,7 +37,7 @@ Die zentrale Frage ist nicht nur „Wie viele Felder stimmen?“, sondern: **Wie
 
 Gemessen auf n = 80, Stand des Repos. „–“ heißt: noch nicht gemessen.
 
-| | Regelbasierte Baseline | LLM-Pipeline |
+| | Regelbasierte Baseline | ORIGIN-Prompt auf NIM (Llama 3.3 70B) |
 |---|---|---|
 | PO-Nummer F1 | 98,6 % | – |
 | **Termin F1** | **64,3 %** | – |
@@ -60,9 +60,10 @@ eval/run_eval.py       Adapter über das Gold-Set laufen lassen, Bericht schreib
 eval/report.py         Markdown-Bericht
 eval/adapters/         austauschbare Systeme unter Test
   regex_baseline.py    regelbasiert, ohne LLM, läuft überall
-  origin_ab_parser.py  die LLM-Pipeline aus meinem Projekt ORIGIN (siehe unten)
+  origin_ab_parser.py      ORIGIN-Parser, produktiver Pfad (Anthropic Haiku)
+  origin_ab_parser_nim.py  derselbe Prompt auf NVIDIA NIM (Llama 3.3 70B)
 eval/baselines/        Referenzwerte für das CI-Gate
-tests/                 16 Tests für Metriken, Generator, Baseline, Adapter-Anbindung
+tests/                 18 Tests für Metriken, Generator, Baseline, Adapter-Anbindung
 ```
 
 ## Schnellstart (offline, ohne API-Key)
@@ -75,16 +76,24 @@ python eval/run_eval.py --adapter regex_baseline
 
 ## Die LLM-Pipeline messen
 
-Der Adapter lädt `ab_parser_service.py` **unverändert aus dem lokalen ORIGIN-Repo** (nicht öffentlich, nichts davon wird hier kopiert). Er ersetzt nur die zwei internen Importe (`config`, `timeouts`) durch minimale Stubs und braucht deshalb nur das `anthropic`-Paket.
+Beide Adapter laden `ab_parser_service.py` **unverändert aus dem lokalen ORIGIN-Repo** (nicht öffentlich, nichts davon wird hier kopiert). Sie ersetzen nur die zwei internen Importe (`config`, `timeouts`) durch minimale Stubs.
+
+**Wichtig:** ORIGIN ruft den Parser produktiv über Anthropic Haiku auf. Die zwei Adapter messen deshalb zwei verschiedene Dinge, und die Ergebnisse dürfen nicht vermischt werden.
+
+| Adapter | Was gemessen wird | Braucht |
+|---|---|---|
+| `origin_ab_parser` | der produktive Pfad (Prompt + Validierung + Haiku) | `anthropic`-Paket, `ANTHROPIC_API_KEY` |
+| `origin_ab_parser_nim` | derselbe **Prompt und dieselbe Validierung**, aber **Llama 3.3 70B über NVIDIA NIM** | nur `NIM_API_KEY` (Standardbibliothek) |
 
 ```bash
-pip install anthropic
 export ORIGIN_PATH=/pfad/zu/ORIGIN
-export ANTHROPIC_API_KEY=...
-python eval/run_eval.py --adapter origin_ab_parser --limit 10     # kleiner Test zuerst
-python eval/run_eval.py --adapter origin_ab_parser                # voller Lauf, ca. 80 Modellaufrufe
-python eval/run_eval.py --adapter origin_ab_parser --save-baseline
+export NIM_API_KEY=nvapi-...                  # oder ANTHROPIC_API_KEY für den Haiku-Pfad
+python eval/run_eval.py --adapter origin_ab_parser_nim --limit 5 --concurrency 1   # kleiner Test zuerst
+python eval/run_eval.py --adapter origin_ab_parser_nim --concurrency 1             # voller Lauf
+python eval/run_eval.py --adapter origin_ab_parser_nim --concurrency 1 --save-baseline
 ```
+
+Der NIM-Adapter hält das Free-Tier-Limit von 5 Aufrufen pro Minute ein (mindestens 12,5 s Abstand, Wartezeit bei HTTP 429). Ein voller Lauf über 80 Dokumente dauert deshalb etwa 17 Minuten. Jede Antwort wird in `results/cache/` gespeichert, ein abgebrochener Lauf setzt dort fort. Ein anderes NIM-Modell lässt sich über `NIM_MODEL` einstellen.
 
 ## CI-Gate
 
