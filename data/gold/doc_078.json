@@ -1,0 +1,10 @@
+{
+  "po_number": null,
+  "confirmed_delivery_date": "2026-10-08",
+  "confirmed_quantity": 48.0,
+  "unit_price": 2184.08,
+  "currency": "USD",
+  "supplier_name": "Müller Antriebstechnik GmbH",
+  "scenario": "missing_po",
+  "lang": "de"
+}

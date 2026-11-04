@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-256226
+Supplier: Baltic Cables OÜ
+Your PO: PO-85886
+Document date: 2026-07-29
+Pos. 1  Qty: 2,400 pcs
+Unit price: 2,334.20 GBP
+Your requested date: 2026-08-09
+Confirmed delivery date: 2026-08-29

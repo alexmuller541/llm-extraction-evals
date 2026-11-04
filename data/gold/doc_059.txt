@@ -1,0 +1,8 @@
+Auftragsbestätigung AB-498468
+Lieferant: Acme Fasteners Ltd
+Ihre Bestellung: B-2026-8743
+Belegdatum: 2026-07-27
+Pos. 1  Menge: 500 Stk
+Preis/Stk: 1.731,92 EUR
+Ihr Wunschtermin: 2026-08-12
+Liefertermin wird nachgereicht.

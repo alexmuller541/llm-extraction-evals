@@ -1,0 +1,10 @@
+{
+  "po_number": "PO-22299",
+  "confirmed_delivery_date": "2026-11-18",
+  "confirmed_quantity": 2400.0,
+  "unit_price": 1016.24,
+  "currency": "CHF",
+  "supplier_name": "Dubois Composants SAS",
+  "scenario": "both_dates",
+  "lang": "de"
+}

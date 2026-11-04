@@ -1,0 +1,7 @@
+Auftragsbestätigung AB-779172
+Lieferant: Acme Fasteners Ltd
+Ihre Bestellung: 4525766039
+Belegdatum: 01.08.2026
+Pos. 1  Menge: 10 Stk
+Preis/Stk: 1.380,85 CHF
+Liefertermin: 12.09.2026

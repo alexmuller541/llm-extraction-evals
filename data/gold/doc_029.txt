@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-571932
+Supplier: Baltic Cables OÜ
+Your PO: B-2026-7778
+Document date: July 28, 2026
+Pos. 1  Qty: 500 pcs
+Unit price: 1,067.14 GBP
+Requested delivery date: October 3, 2026
+Confirmed ship date: October 11, 2026

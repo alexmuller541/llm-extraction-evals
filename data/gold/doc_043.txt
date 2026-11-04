@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-478411
+Supplier: Baltic Cables OÜ
+Your PO: 4540532273
+Document date: August 1, 2026
+Pos. 1  Qty: 500 pcs
+Unit price: 707.86 CHF
+Your requested date: November 20, 2026
+Delivery confirmed for: November 29, 2026

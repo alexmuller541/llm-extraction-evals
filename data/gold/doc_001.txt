@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-214975
+Supplier: Hanseatic Packaging GmbH
+Your PO: PO-7175
+Document date: 2026-07-31
+Pos. 1  Qty: 25 pcs
+Unit price: 2,493.32 EUR
+Requested delivery date: 2026-10-01
+Confirmed ship date: 2026-10-19

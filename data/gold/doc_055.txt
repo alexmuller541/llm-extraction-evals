@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-173201
+Supplier: Shenzhen Microtech Co., Ltd.
+Your PO: B-2026-2237
+Document date: July 29, 2026
+Pos. 1  Qty: 120 pcs
+Unit price: 1,378.39 EUR
+Requested delivery date: August 20, 2026
+Confirmed delivery date: September 8, 2026

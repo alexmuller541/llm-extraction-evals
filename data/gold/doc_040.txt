@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-612311
+Supplier: Acme Fasteners Ltd
+Your PO: B-2026-6659
+Document date: 2026-07-31
+Pos. 1  Qty: 10 pcs
+Unit price: 1,291.81 CHF
+Requested delivery date: 2026-08-15
+Delivery confirmed for: 2026-08-25

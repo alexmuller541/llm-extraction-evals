@@ -1,0 +1,15 @@
+{
+  "n": 80,
+  "seed": 42,
+  "today": "2026-08-01",
+  "scenarios": {
+    "both_dates": 18,
+    "distractor": 6,
+    "clean": 21,
+    "only_requested": 6,
+    "email": 11,
+    "ambiguous_date": 7,
+    "missing_po": 7,
+    "ocr_noise": 4
+  }
+}

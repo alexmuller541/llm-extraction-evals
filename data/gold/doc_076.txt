@@ -1,0 +1,7 @@
+ORDER CONFIRMATION AB-339592
+Supplier: Müller Antriebstechnik GmbH
+Your PO: 4570606674
+Document date: 28 July 2026
+Pos. 1  Qty: 1,200 pcs
+Unit price: 2,194.33 GBP
+Delivery date: 15 November 2026

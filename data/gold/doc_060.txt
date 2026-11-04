@@ -1,0 +1,7 @@
+Auftragsbestätigung AB-827712
+Lieferant: Acme Fasteners Ltd
+Ihre Bestellung: 4532329103
+Belegdatum: 01.08.2026
+Pos. 1  Menge: 1.200 Stk
+Preis/Stk: 226,40 EUR
+Liefertermin: 20.11.2026

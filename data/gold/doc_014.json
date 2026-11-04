@@ -1,0 +1,10 @@
+{
+  "po_number": "PO-35814",
+  "confirmed_delivery_date": null,
+  "confirmed_quantity": 500.0,
+  "unit_price": 791.27,
+  "currency": "CHF",
+  "supplier_name": "Baltic Cables OÜ",
+  "scenario": "ambiguous_date",
+  "lang": "de"
+}

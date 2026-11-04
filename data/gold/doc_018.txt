@@ -1,0 +1,7 @@
+Auftragsbestätigung AB-839945
+Lieferant: Acme Fasteners Ltd
+Ihre Bestellung: PO-98154
+Belegdatum: 2026-07-31
+Pos. 1  Menge: 10 Stk
+Preis/Stk: 834,22 EUR
+Bestätigter Liefertermin: 08/09/2026

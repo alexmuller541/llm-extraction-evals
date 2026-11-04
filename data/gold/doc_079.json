@@ -1,0 +1,10 @@
+{
+  "po_number": "PO-37512",
+  "confirmed_delivery_date": null,
+  "confirmed_quantity": 2400.0,
+  "unit_price": 270.99,
+  "currency": "EUR",
+  "supplier_name": "Shenzhen Microtech Co., Ltd.",
+  "scenario": "ambiguous_date",
+  "lang": "de"
+}

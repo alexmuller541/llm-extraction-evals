@@ -1,0 +1,6 @@
+Auftragsbestätigung AB-401601
+Lieferant: Müller Antriebstechnik GmbH
+Belegdatum: 2026-07-26
+Pos. 1  Menge: 48 Stk
+Preis/Stk: 2.184,08 USD
+Bestätigter Liefertermin: 2026-10-08

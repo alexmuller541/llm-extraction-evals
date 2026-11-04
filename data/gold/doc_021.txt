@@ -1,0 +1,7 @@
+ORDER CONFIRMATION AB-309267
+Supplier: Bayern Kunststoff KG
+Your PO: 4539854548
+Document date: August 1, 2026
+Pos. 1  Qty: 25 pcs
+Unit price: 1,968.54 EUR
+Delivery date: October 2, 2026

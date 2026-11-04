@@ -1,0 +1,10 @@
+{
+  "po_number": "PO-44228",
+  "confirmed_delivery_date": "2026-09-25",
+  "confirmed_quantity": 120.0,
+  "unit_price": 870.23,
+  "currency": "EUR",
+  "supplier_name": "Shenzhen Microtech Co., Ltd.",
+  "scenario": "both_dates",
+  "lang": "en"
+}

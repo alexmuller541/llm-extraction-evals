@@ -1,0 +1,10 @@
+{
+  "po_number": "PO-7175",
+  "confirmed_delivery_date": "2026-10-19",
+  "confirmed_quantity": 25.0,
+  "unit_price": 2493.32,
+  "currency": "EUR",
+  "supplier_name": "Hanseatic Packaging GmbH",
+  "scenario": "both_dates",
+  "lang": "en"
+}

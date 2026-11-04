@@ -1,0 +1,7 @@
+ORDER CONFIRMATION AB-878325
+Supplier: Müller Antriebstechnik GmbH
+Your PO: 4588831486
+Document date: 29 July 2026
+Pos. 1  Qty: 500 pcs
+Unit price: 339.59 EUR
+Delivery date: 1 October 2026

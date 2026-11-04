@@ -1,0 +1,10 @@
+{
+  "po_number": "PO-98154",
+  "confirmed_delivery_date": null,
+  "confirmed_quantity": 10.0,
+  "unit_price": 834.22,
+  "currency": "EUR",
+  "supplier_name": "Acme Fasteners Ltd",
+  "scenario": "ambiguous_date",
+  "lang": "de"
+}

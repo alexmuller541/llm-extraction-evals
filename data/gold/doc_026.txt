@@ -1,0 +1,6 @@
+Auftragsbestätigung AB-805477
+Lieferant: Acme Fasteners Ltd
+Belegdatum: 30.07.2026
+Pos. 1  Menge: 1.200 Stk
+Preis/Stk: 1.582,54 CHF
+Bestätigter Liefertermin: 26.08.2026

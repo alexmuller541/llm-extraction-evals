@@ -1,0 +1,7 @@
+ORDER CONFIRMATION AB-810526
+Supplier: Nordstahl AG
+Your PO: 4548605268
+Document date: 2026-07-29
+Pos. 1  Qty: 120 pcs
+Unit price: 1,594.94 EUR
+Delivery date: 2026-09-16

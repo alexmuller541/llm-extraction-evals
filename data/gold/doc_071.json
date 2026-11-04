@@ -1,0 +1,10 @@
+{
+  "po_number": "PO-48537",
+  "confirmed_delivery_date": "2026-10-10",
+  "confirmed_quantity": 10.0,
+  "unit_price": 1725.86,
+  "currency": "EUR",
+  "supplier_name": "Hanseatic Packaging GmbH",
+  "scenario": "ocr_noise",
+  "lang": "en"
+}

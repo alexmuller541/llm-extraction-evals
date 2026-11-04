@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-247594
+Supplier: Acme Fasteners Ltd
+Your PO: 4520106509
+Document date: 26 July 2026
+Pos. 1  Qty: 2,400 pcs
+Unit price: 738.21 USD
+Requested delivery date: 21 September 2026
+Confirmed delivery date: 27 September 2026

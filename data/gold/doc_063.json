@@ -1,0 +1,10 @@
+{
+  "po_number": "4574855088",
+  "confirmed_delivery_date": null,
+  "confirmed_quantity": 120.0,
+  "unit_price": 1725.94,
+  "currency": "GBP",
+  "supplier_name": "Acme Fasteners Ltd",
+  "scenario": "only_requested",
+  "lang": "en"
+}

@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-839485
+Supplier: Bayern Kunststoff KG
+Your PO: 4573481797
+Document date: 26 July 2026
+Pos. 1  Qty: 120 pcs
+Unit price: 584.29 CHF
+Requested delivery date: 2 October 2026
+Delivery date will follow.

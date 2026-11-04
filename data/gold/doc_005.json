@@ -1,0 +1,10 @@
+{
+  "po_number": "PO-87474",
+  "confirmed_delivery_date": "2026-10-22",
+  "confirmed_quantity": 120.0,
+  "unit_price": 2040.15,
+  "currency": "GBP",
+  "supplier_name": "Müller Antriebstechnik GmbH",
+  "scenario": "email",
+  "lang": "de"
+}

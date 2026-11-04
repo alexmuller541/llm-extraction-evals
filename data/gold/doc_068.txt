@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-962367
+Supplier: Acme Fasteners Ltd
+Your PO: B-2026-6243
+Document date: 27 July 2026
+Pos. 1  Qty: 10 pcs
+Note: delivery for B-2026-6087 was completed on 29 June 2026.
+Unit price: 1,137.24 CHF
+Delivery date: 18 November 2026

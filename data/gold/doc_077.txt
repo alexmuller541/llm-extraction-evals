@@ -1,0 +1,7 @@
+ORDER CONFIRMATION AB-880758
+Supplier: Müller Antriebstechnik GmbH
+Your PO: B-2026-7771
+Document date: 2026-07-30
+Pos. 1  Qty: 120 pcs
+Unit price: 781.65 EUR
+Confirmed ship date: 07/02/2026

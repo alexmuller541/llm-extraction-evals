@@ -1,0 +1,10 @@
+{
+  "po_number": "PO-59082",
+  "confirmed_delivery_date": null,
+  "confirmed_quantity": 25.0,
+  "unit_price": 1054.99,
+  "currency": "USD",
+  "supplier_name": "Alpine Hydraulik GmbH",
+  "scenario": "ambiguous_date",
+  "lang": "de"
+}

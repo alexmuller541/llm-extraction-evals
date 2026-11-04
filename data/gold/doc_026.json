@@ -1,0 +1,10 @@
+{
+  "po_number": null,
+  "confirmed_delivery_date": "2026-08-26",
+  "confirmed_quantity": 1200.0,
+  "unit_price": 1582.54,
+  "currency": "CHF",
+  "supplier_name": "Acme Fasteners Ltd",
+  "scenario": "missing_po",
+  "lang": "de"
+}

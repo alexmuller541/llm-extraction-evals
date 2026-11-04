@@ -1,0 +1,10 @@
+{
+  "po_number": null,
+  "confirmed_delivery_date": "2026-11-28",
+  "confirmed_quantity": 2400.0,
+  "unit_price": 1209.0,
+  "currency": "CHF",
+  "supplier_name": "Baltic Cables OÜ",
+  "scenario": "missing_po",
+  "lang": "de"
+}

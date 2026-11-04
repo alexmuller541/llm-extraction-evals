@@ -1,0 +1,10 @@
+{
+  "po_number": "PO-6482",
+  "confirmed_delivery_date": "2026-09-02",
+  "confirmed_quantity": 2400.0,
+  "unit_price": 923.36,
+  "currency": "EUR",
+  "supplier_name": "Alpine Hydraulik GmbH",
+  "scenario": "both_dates",
+  "lang": "de"
+}

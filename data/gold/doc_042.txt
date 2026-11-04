@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-878967
+Supplier: Shenzhen Microtech Co., Ltd.
+Your PO: 4526046365
+Document date: 2026-08-01
+Pos. 1  Qty: 48 pcs
+Unit price: 628.88 EUR
+Your requested date: 2026-11-06
+Confirmed ship date: 2026-11-15

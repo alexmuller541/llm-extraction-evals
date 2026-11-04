@@ -1,0 +1,8 @@
+Auftragsbestätigung AB-563638
+Lieferant: Acme Fasteners Ltd
+Ihre Bestellung: 4569295515
+Belegdatum: 2026-07-28
+Pos. 1  Menge: 120 Stk
+Preis/Stk: 1.964,50 EUR
+Gewünschter Liefertermin: 2026-10-24
+Lieferdatum (bestätigt): 2026-11-06

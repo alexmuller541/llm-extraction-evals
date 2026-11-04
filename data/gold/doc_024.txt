@@ -1,0 +1,6 @@
+ORDER CONFIRMATION AB-745414
+Supplier: Nordstahl AG
+Document date: 2026-07-29
+Pos. 1  Qty: 120 pcs
+Unit price: 1,662.49 EUR
+Confirmed ship date: 2026-11-09

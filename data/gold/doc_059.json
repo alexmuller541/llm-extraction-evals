@@ -1,0 +1,10 @@
+{
+  "po_number": "B-2026-8743",
+  "confirmed_delivery_date": null,
+  "confirmed_quantity": 500.0,
+  "unit_price": 1731.92,
+  "currency": "EUR",
+  "supplier_name": "Acme Fasteners Ltd",
+  "scenario": "only_requested",
+  "lang": "de"
+}

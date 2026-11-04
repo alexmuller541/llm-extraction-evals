@@ -1,0 +1,10 @@
+{
+  "po_number": "B-2026-6243",
+  "confirmed_delivery_date": "2026-11-18",
+  "confirmed_quantity": 10.0,
+  "unit_price": 1137.24,
+  "currency": "CHF",
+  "supplier_name": "Acme Fasteners Ltd",
+  "scenario": "distractor",
+  "lang": "en"
+}

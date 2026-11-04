@@ -1,0 +1,8 @@
+ORDER CONFIRMATION AB-211834
+Supplier: Acme Fasteners Ltd
+Your PO: 4574855088
+Document date: 2026-07-29
+Pos. 1  Qty: 120 pcs
+Unit price: 1,725.94 GBP
+Requested delivery date: 2026-09-13
+Delivery date will follow.

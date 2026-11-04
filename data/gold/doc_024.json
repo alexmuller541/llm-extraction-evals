@@ -1,0 +1,10 @@
+{
+  "po_number": null,
+  "confirmed_delivery_date": "2026-11-09",
+  "confirmed_quantity": 120.0,
+  "unit_price": 1662.49,
+  "currency": "EUR",
+  "supplier_name": "Nordstahl AG",
+  "scenario": "missing_po",
+  "lang": "en"
+}

@@ -1,0 +1,10 @@
+{
+  "po_number": "B-2026-7771",
+  "confirmed_delivery_date": null,
+  "confirmed_quantity": 120.0,
+  "unit_price": 781.65,
+  "currency": "EUR",
+  "supplier_name": "Müller Antriebstechnik GmbH",
+  "scenario": "ambiguous_date",
+  "lang": "en"
+}

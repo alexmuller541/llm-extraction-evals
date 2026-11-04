@@ -1,16 +1,22 @@
+"""Gemeinsame Konstanten. Feldnamen folgen der Extraktions-Pipeline, die bewertet wird."""
 from datetime import date
-from typing import Optional
 
-from pydantic import BaseModel
+FIELDS = [
+    "po_number",
+    "confirmed_delivery_date",
+    "confirmed_quantity",
+    "unit_price",
+    "currency",
+    "supplier_name",
+]
 
-FIELDS = ["supplier", "order_no", "delivery_date", "quantity", "unit_price", "currency", "incoterm"]
+# Felder, auf denen eine Folgeaktion aufbaut (Zuordnung zur Bestellung, Terminvergleich).
+# Ein Fehler hier ist teurer als ein falscher Lieferantenname.
+KEY_FIELDS = ["po_number", "confirmed_delivery_date"]
 
+# Stichtag der synthetischen Dokumente. Wird an die Pipeline übergeben, damit
+# "Termin liegt in der Vergangenheit"-Regeln nicht vom heutigen Datum abhängen.
+GOLD_TODAY = date(2026, 8, 1)
 
-class OrderConfirmation(BaseModel):
-    supplier: Optional[str] = None
-    order_no: Optional[str] = None
-    delivery_date: Optional[date] = None
-    quantity: Optional[float] = None
-    unit_price: Optional[float] = None
-    currency: Optional[str] = None
-    incoterm: Optional[str] = None
+# Ab dieser Konfidenz gilt ein Wert als "sicher"
+CONFIDENT = 0.7
