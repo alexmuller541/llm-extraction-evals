@@ -57,7 +57,9 @@ def main() -> None:
     items = asyncio.run(run(a.adapter, gold_dir, today, a.concurrency, a.limit))
     errors = [i["id"] for i in items if i["pred"].get("error")]
     summary = summarize(items)
+    adapter_mod = importlib.import_module(f"adapters.{a.adapter}")
     summary["adapter"], summary["errors"] = a.adapter, errors
+    summary["model"] = adapter_mod.describe() if hasattr(adapter_mod, "describe") else None
 
     Path("results").mkdir(exist_ok=True)
     Path(f"results/{a.adapter}.json").write_text(
@@ -65,7 +67,8 @@ def main() -> None:
     write_report(summary, Path(f"results/{a.adapter}.md"))
     print(Path(f"results/{a.adapter}.md").read_text(encoding="utf-8"))
     if errors:
-        print(f"WARNUNG: {len(errors)} Dokumente mit Fehler: {errors[:5]}")
+        first = next(i["pred"]["error"] for i in items if i["pred"].get("error"))
+        print(f"WARNUNG: {len(errors)} Dokumente mit Fehler: {errors[:5]}\nErster Fehler: {first}")
 
     baseline_path = Path(a.baseline or f"eval/baselines/{a.adapter}.json")
     if a.save_baseline:

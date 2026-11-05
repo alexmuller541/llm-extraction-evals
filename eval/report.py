@@ -10,6 +10,8 @@ def pct(x):
 
 def write_report(s: dict, path: Path) -> None:
     L = [f"# Eval-Ergebnis: `{s['adapter']}` (n = {s['n_docs']} synthetische Dokumente)\n"]
+    if s.get("model"):
+        L.append(f"Modell: **{s['model']}**\n")
     L.append("## Pro Feld\n")
     L.append("| Feld | Precision | Recall | F1 | falsch | verpasst | halluziniert | Verzicht korrekt |")
     L.append("|---|---|---|---|---|---|---|---|")

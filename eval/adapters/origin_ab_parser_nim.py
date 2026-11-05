@@ -1,10 +1,12 @@
-"""ORIGIN-Parser-Prompt auf NVIDIA NIM (Llama 3.3 70B) statt Anthropic Haiku.
+"""ORIGIN-Parser-Prompt auf NVIDIA NIM statt Anthropic Haiku.
 
 WICHTIG für die Einordnung der Ergebnisse: ORIGIN ruft den Parser produktiv über Anthropic Haiku
 auf. Dieser Adapter misst etwas anderes: den **unveränderten Prompt und die unveränderte
 Validierungslogik** aus `ab_parser_service.py` (SYSTEM_PROMPT, `_extract_json`, `build_result`),
-aber mit einem NIM-Modell. Die Ergebnisse gelten für "ORIGIN-Parser-Prompt auf Llama 3.3 70B",
-nicht für den Haiku-Pfad.
+aber mit einem NIM-Modell (siehe `describe()` und den Bericht). Die Ergebnisse gelten für
+"ORIGIN-Parser-Prompt auf <NIM-Modell>", nicht für den Haiku-Pfad.
+Hinweis: Welche Modelle ein Free-Tier-Key bedienen darf, ist kontoabhängig (404 = nicht freigegeben,
+410 = abgeschaltet). Das Standardmodell kann per NIM_MODEL überschrieben werden.
 
     export ORIGIN_PATH=/pfad/zu/ORIGIN
     export NIM_API_KEY=nvapi-...            # derselbe Key wie `nim_api_key` in ORIGIN
@@ -31,7 +33,7 @@ from pathlib import Path
 from adapters.origin_ab_parser import load_module, map_result
 
 NIM_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
-DEFAULT_MODEL = "meta/llama-3.3-70b-instruct"
+DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b"   # llama-3.3-70b liefert bei NIM inzwischen HTTP 410
 MIN_INTERVAL_S = 12.5      # 5 Aufrufe pro Minute
 COOLDOWN_429_S = 30.0      # wie nim_rate_limit_cooldown_seconds in ORIGIN
 MAX_RETRIES = 3
@@ -39,6 +41,10 @@ CACHE_DIR = Path("results/cache/origin_ab_parser_nim")
 
 _lock = None
 _last_call = 0.0
+
+
+def describe() -> str:
+    return f"{_model()} (NVIDIA NIM)"
 
 
 def _model() -> str:

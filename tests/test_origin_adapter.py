@@ -63,7 +63,7 @@ def test_nim_adapter_uses_origin_prompt_parses_fenced_json_and_caches(tmp_path=N
     pred = asyncio.run(nim.extract("Beispieltext", GOLD_TODAY))
     assert pred["fields"]["po_number"]["value"] == "PO-4471" and pred["needs_review"] is False
     assert calls[0]["messages"][0]["content"].startswith("You extract structured data")  # Prompt aus ORIGIN
-    assert calls[0]["temperature"] == 0 and calls[0]["model"] == "meta/llama-3.3-70b-instruct"
+    assert calls[0]["temperature"] == 0 and calls[0]["model"] == nim.DEFAULT_MODEL
     asyncio.run(nim.extract("Beispieltext", GOLD_TODAY))
     assert len(calls) == 1  # zweiter Aufruf kommt aus dem Cache
 

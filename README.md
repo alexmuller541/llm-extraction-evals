@@ -37,7 +37,7 @@ Die zentrale Frage ist nicht nur „Wie viele Felder stimmen?“, sondern: **Wie
 
 Gemessen auf n = 80, Stand des Repos. „–“ heißt: noch nicht gemessen.
 
-| | Regelbasierte Baseline | ORIGIN-Prompt auf NIM (Llama 3.3 70B) |
+| | Regelbasierte Baseline | ORIGIN-Prompt auf NIM (`nemotron-3-ultra-550b`) |
 |---|---|---|
 | PO-Nummer F1 | 98,6 % | – |
 | **Termin F1** | **64,3 %** | – |
@@ -61,7 +61,7 @@ eval/report.py         Markdown-Bericht
 eval/adapters/         austauschbare Systeme unter Test
   regex_baseline.py    regelbasiert, ohne LLM, läuft überall
   origin_ab_parser.py      ORIGIN-Parser, produktiver Pfad (Anthropic Haiku)
-  origin_ab_parser_nim.py  derselbe Prompt auf NVIDIA NIM (Llama 3.3 70B)
+  origin_ab_parser_nim.py  derselbe Prompt auf NVIDIA NIM (Standard: nemotron-3-ultra-550b)
 eval/baselines/        Referenzwerte für das CI-Gate
 tests/                 18 Tests für Metriken, Generator, Baseline, Adapter-Anbindung
 ```
@@ -83,7 +83,7 @@ Beide Adapter laden `ab_parser_service.py` **unverändert aus dem lokalen ORIGIN
 | Adapter | Was gemessen wird | Braucht |
 |---|---|---|
 | `origin_ab_parser` | der produktive Pfad (Prompt + Validierung + Haiku) | `anthropic`-Paket, `ANTHROPIC_API_KEY` |
-| `origin_ab_parser_nim` | derselbe **Prompt und dieselbe Validierung**, aber **Llama 3.3 70B über NVIDIA NIM** | nur `NIM_API_KEY` (Standardbibliothek) |
+| `origin_ab_parser_nim` | derselbe **Prompt und dieselbe Validierung**, aber **ein NIM-Modell** (Standard: `nvidia/nemotron-3-ultra-550b-a55b`) | nur `NIM_API_KEY` (Standardbibliothek) |
 
 ```bash
 export ORIGIN_PATH=/pfad/zu/ORIGIN
@@ -93,7 +93,7 @@ python eval/run_eval.py --adapter origin_ab_parser_nim --concurrency 1          
 python eval/run_eval.py --adapter origin_ab_parser_nim --concurrency 1 --save-baseline
 ```
 
-Der NIM-Adapter hält das Free-Tier-Limit von 5 Aufrufen pro Minute ein (mindestens 12,5 s Abstand, Wartezeit bei HTTP 429). Ein voller Lauf über 80 Dokumente dauert deshalb etwa 17 Minuten. Jede Antwort wird in `results/cache/` gespeichert, ein abgebrochener Lauf setzt dort fort. Ein anderes NIM-Modell lässt sich über `NIM_MODEL` einstellen.
+Der NIM-Adapter hält das Free-Tier-Limit von 5 Aufrufen pro Minute ein (mindestens 12,5 s Abstand, Wartezeit bei HTTP 429). Ein voller Lauf über 80 Dokumente dauert deshalb etwa 17 bis 20 Minuten. Jede Antwort wird in `results/cache/` gespeichert, ein abgebrochener Lauf setzt dort fort. Ein anderes NIM-Modell lässt sich über `NIM_MODEL` einstellen. Welche Modelle ein Free-Tier-Key bedienen darf, ist kontoabhängig: HTTP 404 heißt nicht freigegeben, 410 abgeschaltet (Llama 3.3 70B liefert inzwischen 410), und manche Modelle brauchen für den langen Prompt zu lange oder brechen das JSON ab. Der Bericht nennt immer das verwendete Modell.
 
 ## CI-Gate
 
