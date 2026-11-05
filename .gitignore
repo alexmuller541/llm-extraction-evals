@@ -4,4 +4,3 @@ __pycache__/
 results/*.json
 .pytest_cache/
 results/cache/
-results/origin_ab_parser_nim.*

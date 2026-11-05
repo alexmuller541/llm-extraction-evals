@@ -4,7 +4,7 @@ Eval-Harness für LLM-Extraktion aus **Lieferanten-Auftragsbestätigungen** (DE/
 
 Die zentrale Frage ist nicht nur „Wie viele Felder stimmen?“, sondern: **Wie oft landet ein falscher Liefertermin ohne Prüfmarkierung im System?** Ein falscher bestätigter Termin verfälscht Bestandsprognosen und Euro-Zahlen, ein fehlender Termin kostet nur einen Blick.
 
-> **Status:** Harness, Gold-Set, Metriken, Tests und regelbasierte Baseline laufen. Die Messung des ORIGIN-Prompts mit einem LLM (Tabelle unten) steht noch aus und wird erst eingetragen, wenn sie gelaufen ist.
+> **Status:** Harness, Gold-Set, Metriken, Tests, regelbasierte Baseline und eine erste LLM-Messung (80 Dokumente, ein Modell, ein Lauf) liegen vor. Die Ergebnisse stehen unten, samt Einschränkungen.
 
 ## Was gemessen wird
 
@@ -35,20 +35,33 @@ Die zentrale Frage ist nicht nur „Wie viele Felder stimmen?“, sondern: **Wie
 
 ## Ergebnisse
 
-Gemessen auf n = 80, Stand des Repos. „–“ heißt: noch nicht gemessen.
+n = 80 synthetische Dokumente, ein Lauf, Temperatur 0. **LLM** heißt hier: der unveränderte Extraktions-Prompt samt Validierung aus meinem Projekt ORIGIN, ausgeführt auf `nvidia/nemotron-3-ultra-550b-a55b` über NVIDIA NIM. ORIGIN selbst ruft den Parser produktiv über Anthropic Haiku auf. Der Haiku-Pfad ist **nicht** gemessen.
 
-| | Regelbasierte Baseline | ORIGIN-Prompt auf NIM (`nemotron-3-ultra-550b`) |
+| | Regelbasierte Baseline | ORIGIN-Prompt auf NIM |
 |---|---|---|
-| PO-Nummer F1 | 98,6 % | – |
-| **Termin F1** | **64,3 %** | – |
-| Termin halluziniert (Soll `null`) | 9 | – |
-| Dokumente mit falschem Schlüsselfeld | 30 von 80 | – |
-| davon **ohne Prüfmarkierung** | **30** (37,5 %) | – |
-| Fehlerfang-Rate | 0 % | – |
+| Makro-F1 (6 Felder) | 90,6 % | **99,1 %** |
+| Termin F1 | 64,3 % | **99,2 %** |
+| PO-Nummer F1 | 98,6 % | 98,0 % |
+| Termin halluziniert (Soll `null`) | 9 | **0** |
+| Dokumente mit falschem Schlüsselfeld (PO/Termin) | 30 von 80 | **3 von 80** |
+| davon ohne Prüfmarkierung übernommen | 30 (37,5 %) | 3 (3,8 %) |
+| Beleg-Snippets wörtlich im Dokument | 100 % | 100 % |
+| Kalibrierung (ECE) | 0,007 | 0,031 |
 
-Die Baseline nimmt das erste Datum in einer Zeile mit „liefer/deliver/ship“. Sie scheitert genau dort, wo man es erwartet: Wunschtermin statt bestätigtem (10 von 18 `both_dates`), mehrdeutige Daten (7 von 7 halluziniert), Termin einer früheren Lieferung (6 von 6 falsch). Keiner ihrer 30 Fehler wird zur Prüfung markiert. Ihr Mengenfeld liest deutsche Tausenderpunkte falsch (`1.200` als 1,2). Das ist eine echte Schwäche einfacher Regeln und kein Messfehler.
+**Was auffällt**
 
-Vollständiger Bericht: [`results/regex_baseline.md`](results/regex_baseline.md).
+- Die Fallen, an denen die Regel-Baseline scheitert, löst das Modell vollständig: Wunsch- vs. bestätigter Termin (18/18), mehrdeutige Daten wie `04/05/2026` (7/7 korrekt `null`), Termin einer früheren Lieferung (6/6), nur Wunschtermin (6/6).
+- **Der einzige Fehlertyp: Das Modell hält die Auftragsbestätigungs-Nummer für die Bestellnummer.** In 3 von 7 Dokumenten ohne Käufer-PO (`missing_po`) lieferte es `AB-…` als `po_number`, mit Konfidenz 0,95 und `needs_review = false`. Die Fehlerfang-Rate der Prüflogik im Parser liegt dort bei 0 %.
+- Einordnung: Im vollständigen ORIGIN-Ablauf wird die gefundene PO-Nummer deterministisch gegen das Orderbuch abgeglichen. Eine `AB-…`-Nummer würde dort nicht zugeordnet und landet bei einem Menschen. Diese Stufe misst das Harness nicht, hier wird nur der Parser bewertet.
+- Ein Dokument (`doc_038`) kam als abgeschnittenes JSON zurück. Der Parser behandelte es korrekt als „zur Prüfung“ und lieferte nichts Falsches.
+
+**Einschränkungen**
+
+- Das Gold-Set ist mit 80 Dokumenten klein, `missing_po` hat nur 7. „3 von 7“ ist ein Hinweis und keine Rate mit Konfidenzintervall.
+- Die synthetischen Dokumente sind sauber. Dass das Modell fast alles trifft, heißt auch: Das Gold-Set ist für dieses Modell zu leicht. Nächster Schritt sind schwerere Härtefälle (echte OCR-Fehler in Werten, mehrere Positionen, Teillieferungen).
+- Ein Modell, ein Lauf. Keine Aussage über Haiku oder andere Modelle.
+
+Berichte: [`results/origin_ab_parser_nim.md`](results/origin_ab_parser_nim.md) (LLM), [`results/regex_baseline.md`](results/regex_baseline.md) (Baseline).
 
 ## Aufbau
 
